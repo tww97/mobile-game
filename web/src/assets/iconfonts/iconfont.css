@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2643912 */
+  src: url('iconfont.woff2?t=1625065185137') format('woff2'),
+       url('iconfont.woff?t=1625065185137') format('woff'),
+       url('iconfont.ttf?t=1625065185137') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e604";
+}
+
+.icon-card-hero:before {
+  content: "\e61f";
+}
+
+.icon-fanhui:before {
+  content: "\e603";
+}
+
+.icon-shipin:before {
+  content: "\e60c";
+}
+
+.icon-news:before {
+  content: "\e638";
+}
+
+.icon-Menu:before {
+  content: "\e6d5";
+}
+

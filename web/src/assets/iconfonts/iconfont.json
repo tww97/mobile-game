@@ -1,0 +1,51 @@
+{
+  "id": "2643912",
+  "name": "moba",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6450875",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "6654507",
+      "name": "card-hero",
+      "font_class": "card-hero",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "9361904",
+      "name": "返 回",
+      "font_class": "fanhui",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "11966214",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "12370807",
+      "name": "新闻",
+      "font_class": "news",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "14507471",
+      "name": "Menu",
+      "font_class": "Menu",
+      "unicode": "e6d5",
+      "unicode_decimal": 59093
+    }
+  ]
+}
