@@ -1,7 +1,7 @@
 <template>
   <div class="page-article" v-if="model">
     <div class="d-flex py-3 px-2 border-bottom">
-      <div class="iconfont icon-fanhui text-blue"></div>
+      <router-link to='/'><div class="iconfont icon-fanhui text-blue"></div></router-link>
       <strong class="flex-1 text-blue pl-2">{{model.title}}</strong>
       <div class="text-grey fs-xs">2019-06-19</div>
     </div>
@@ -53,6 +53,9 @@ export default {
 </script>
 
 <style lang="scss">
+a{
+  color: #f1f1f1
+}
 .page-article {
   .icon-fanhui {
     font-size: 0.9rem;

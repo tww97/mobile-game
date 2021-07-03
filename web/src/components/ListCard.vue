@@ -1,5 +1,8 @@
 <template>
   <m-card :icon="icon" :title="title">
+    <div>
+      <slot name='card'></slot>
+    </div>
     <div class="nav jc-between">
       <div class="nav-item" :class="{active: active === i}"
       v-for="(category, i) in categories" :key="i"

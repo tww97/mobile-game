@@ -1,9 +1,12 @@
 <template>
   <div class="home">
     <swiper :options='swiperOption' autoplay>
-      <swiper-slide><img src='../assets/images/1.jpeg' class='w-100'></swiper-slide>
+      <swiper-slide v-for='(val, num) in adCats' :key='num'>
+        <a :href="val['url']"><img :src="val['image']" alt="广告" class='w-100'></a>
+      </swiper-slide>
+      <!-- <swiper-slide><a href=""></a><img src='../assets/images/1.jpeg' class='w-100'></swiper-slide>
       <swiper-slide><img src='../assets/images/2.jpeg' class='w-100'></swiper-slide>
-      <swiper-slide><img src='../assets/images/3.jpeg' class='w-100'></swiper-slide>
+      <swiper-slide><img src='../assets/images/3.jpeg' class='w-100'></swiper-slide> -->
       <div class="swiper-pagination pagination-home text-right px-3 pb-1" slot='pagination'></div>
     </swiper>  
     <!--end of swiper -->
@@ -39,6 +42,12 @@
     </m-list-card>
 
     <m-list-card icon="card-hero" title="英雄列表" :categories="heroCats">
+      <template v-slot:card>
+        <div class="mb-2">
+          <img src="../assets/images/39070448590418.jpg" class='w-100'>
+        </div>
+        <div class='underline mb-3'></div>
+      </template>
       <template #items="{category}">
         <div class="d-flex flex-wrap" style="margin: 0 -0.5rem;">
           <router-link
@@ -54,8 +63,26 @@
       </template>
     </m-list-card>
 
-    <m-card icon="menu1" title="精彩视频"></m-card>
+    <div class="load-more py-3 bg-white">
+      <div class="inner">加载更多内容</div>
+    </div>
+
+    <!-- <m-card icon="shipin" title="精彩视频"></m-card> -->
     <!-- <m-card icon="menu1" title="图文攻略"></m-card> -->
+    <!-- <m-list-card icon="shipin" title="精彩视频" :categories="videoCats">
+      <template #items="{category}">
+        <router-link 
+        tag="div"
+        :to="`/articles/${news._id}`"
+        class="py-2 fs-lg d-flex" 
+        v-for="(news, i) in category.newsList" :key="i">
+          <span class="text-info">[{{news.categoryName}}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
+          <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
+        </router-link>
+      </template>
+    </m-list-card> -->
   </div>
 </template>
 
@@ -79,6 +106,8 @@ export default {
       shouqi: false,
       newsCats: [],
       heroCats: [],
+      adCats:[],
+      videoCats:['精彩栏目','英雄攻略','赛事精品'],
       spriteList: ['news','story','market','experience','newPerson','honor','camp','wechat','version','fight','ip','idea'],
       introList: ['爆料站','故事站','周边商城','体验服','新人专区','荣耀·传承','王者营地','公众号','版本介绍','对局环境','IP共创计划','创意互动营']
     };
@@ -91,6 +120,10 @@ export default {
     async fetchHeroCats() {
       const res = await this.$http.get("heroes/list");
       this.heroCats = res.data;
+    },
+    async fetchAdCats() {
+      const res = await this.$http.get("ads/list");
+      this.adCats = res.data;
     },
     change(){
       this.shouqi = !this.shouqi
@@ -106,14 +139,25 @@ export default {
   created() {
     this.fetchNewsCats();
     this.fetchHeroCats();
+    this.fetchAdCats()
   }
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/variables";
+.inner{
+  // display: inline-block;
+  // margin: 0 auto;
+  font-size: 12px;
+  color: #7a7a80;
+  text-align: center;
+}
 .shouqi{
   transform: rotate(180deg);
+}
+.underline{
+  border-bottom: 1px solid $border-color;
 }
 .pagination-home {
   .swiper-pagination-bullet {
@@ -130,7 +174,7 @@ export default {
   border-bottom: 1px solid $border-color;
   .nav-item {
     width: 25%;
-    border-right: 1px solid #d4d9de;
+    border-right: 1px solid $border-color;
     &:nth-child(4n) {
       border-right: none;
     }

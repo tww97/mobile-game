@@ -27,6 +27,9 @@ export default {
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 .card {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid #d4d9de;
+}
+.card-header {
+  border-bottom: 1px solid #d4d9de;
 }
 </style>
