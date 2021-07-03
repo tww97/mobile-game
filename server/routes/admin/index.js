@@ -31,8 +31,8 @@ module.exports = app => {
 
     const authMiddleWare = require('../../middleware/auth')
     //资源列表
-    // , authMiddleWare()
-    router.get('/' ,async (req, res) => {
+    // 
+    router.get('/' , authMiddleWare(),async (req, res) => {
         const queryOptions = {}
         if (req.Model.modelName === 'Category'){
             queryOptions.populate = 'parent'
@@ -53,14 +53,14 @@ module.exports = app => {
     
 
     const resourceMiddleWare = require('../../middleware/resource')
-    //, authMiddleWare() 
-    app.use('/admin/api/rest/:resource' , resourceMiddleWare() , router)
+    //
+    app.use('/admin/api/rest/:resource' , authMiddleWare(), resourceMiddleWare() , router)
 
 
     const multer = require('multer')
     const upload = multer({dest: __dirname + '/../../uploads'})
-    //authMiddleWare() ,
-    app.post('/admin/api/upload', upload.single('file'), async (req, res) => {
+    //
+    app.post('/admin/api/upload',authMiddleWare() , upload.single('file'), async (req, res) => {
         const file = req.file
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
