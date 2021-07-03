@@ -31,7 +31,8 @@ module.exports = app => {
 
     const authMiddleWare = require('../../middleware/auth')
     //资源列表
-    router.get('/', authMiddleWare() ,async (req, res) => {
+    //, authMiddleWare()
+    router.get('/' ,async (req, res) => {
         const queryOptions = {}
         if (req.Model.modelName === 'Category'){
             queryOptions.populate = 'parent'
@@ -52,8 +53,8 @@ module.exports = app => {
     
 
     const resourceMiddleWare = require('../../middleware/resource')
-
-    app.use('/admin/api/rest/:resource' , authMiddleWare() , resourceMiddleWare() , router)
+    //, authMiddleWare() 
+    app.use('/admin/api/rest/:resource' , resourceMiddleWare() , router)
 
 
     const multer = require('multer')
