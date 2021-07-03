@@ -123,11 +123,12 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if(!to.meta.isPublic && !localStorage.token){
-    return next('/login')
-  }
-  next()
-})
+//未登录直接跳转至登录页
+// router.beforeEach((to, from, next) => {
+//   if(!to.meta.isPublic && !localStorage.token){
+//     return next('/login')
+//   }
+//   next()
+// })
 
 export default router

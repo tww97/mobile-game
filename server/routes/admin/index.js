@@ -31,7 +31,7 @@ module.exports = app => {
 
     const authMiddleWare = require('../../middleware/auth')
     //资源列表
-    //, authMiddleWare()
+    // , authMiddleWare()
     router.get('/' ,async (req, res) => {
         const queryOptions = {}
         if (req.Model.modelName === 'Category'){
